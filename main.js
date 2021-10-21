@@ -4,6 +4,55 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const hiddenMessage = document.getElementById("modal");
+
+const likeGlyphs = document.querySelectorAll(".like-glyph");
+
+// document.getElementById("modal").classList.add(".hidden");
+
+
+function clickEmpyHeart(e){
+  const heart = e.target;
+  mimicServerCall()
+    .then(function(likedPost){
+      if (heart.innerText == EMPTY_HEART){
+        heart.innerText = FULL_HEART;
+        heart.classList.add("activated-heart");
+      } else (heart.innerText = EMPTY_HEART)
+    })
+
+    .catch(function(error){
+      hiddenMessage.classList.remove("hidden")
+      setTimeout(() => {hiddenMessage.classList.add("hidden")}, 3000);
+    })
+  // mimicServerCall()
+  //   .then(function(likedPost){
+  //     if (heart.innerText == EMPTY_HEART){
+  //       heart.innerText = FULL_HEART;
+  //     }
+  //   })
+      
+
+    // })
+    // .catch(function(error){
+    //   hiddenMessage.classList.remove("hidden")
+    //   setTimeout(() => {hiddenMessage.classList.add("hidden")}, 3000);
+    // })
+
+
+  // }
+}
+
+  for (const glyph of likeGlyphs) {
+    glyph.addEventListener("click", clickEmpyHeart);
+  }
+  
+
+
+
+
+
+
 
 
 
